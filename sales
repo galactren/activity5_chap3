@@ -1,71 +1,76 @@
-var r1 = [1540, 1130, 1580, 1105];
-var r2 = [2010, 1168, 2305, 4102];
-var r3 = [2450, 1847, 2710, 2391];
-var r4 = [1845, 1491, 1284, 1575];
-var r5 = [2120, 1767, 1599, 3888];
-var textDisplay;
+var region1 = [1540,1130,1580,1105];
 
-var $ = function (id) {
-return document.getElementById(id);
-}
+var region2 = [2010,1168,2305,4102];
 
-var quarterClicker = function (){
-//alert("you clicked");
-var quarters = [0,0,0,0];
+var region3 = [2450,1847,2710,2391];
 
-for(var i=0;i<4;i++){
-quarters[i]=r1[i]+r2[i]+r3[i]+r4[i]+r5[i];
-//alert(quarters[i]);
+var region4 = [1845,1491,1284,1575];
 
-}
-$("results").innerHTML="Sales by Quarter\nQ1: "+quarters[0]+"\nQ2: "+quarters[1]+"\nQ3: "+quarters[2]+"\nQ4:
+var region5 = [2120,1767,1599,3888];
 
-"+quarters[3];
+// calculate totals by quarter, Define constant and use a for loop
 
+var saleQuarter1 = region1[0]+region2[0]+region3[0]+region4[0]+region5[0];
 
-}
+// calculate totals by quarter, Define constant and use a for loop
 
-var regionClicker = function (){
-var regions = [r1,r2,r3,r4,r5];
-var regionMoneys = [0,0,0,0,0];
-for(var i=0;i<5;i++){
-var temp = 0;
-for(var j=0;j<4;j++){
-temp = temp + regions[i][j];
+var saleQuarter2 = region1[1]+region2[1]+region3[1]+region4[1]+region5[1];
 
-}
-regionMoneys[i]=temp;
-}
+// calculate totals by quarter, Define constant and use a for loop
 
-$("results").innerHTML="Sales by Region\nRegion 1: "+regionMoneys[0]+"\nRegion 2: "+regionMoneys[1]+"\nRegion
+var saleQuarter3 = region1[2]+region2[2]+region3[2]+region4[2]+region5[2];
 
-3: "+regionMoneys[2]+"\nRegion 4: "+regionMoneys[3]+"\nRegion 5: "+regionMoneys[4];
+// calculate totals by quarter, Define constant and use a for loop
 
-}
-
-var totalClicker = function(){
-var regions = [r1,r2,r3,r4,r5];
-var regionMoneys = [0,0,0,0,0];
-var total = 0;
-
-for(var i=0;i<5;i++){
-var temp = 0;
-for(var j=0;j<4;j++){
-temp = temp + regions[i][j];
-
-}
-regionMoneys[i]=temp;
-total = total + temp;
-}
-$("results").innerHTML="Total sales: "+total;
+var saleQuarter4 = region1[3]+region2[3]+region3[3]+region4[3]+region5[3];
 
 
+// calculate totals by region, define constant and use a for loop
 
-}
+var region1Sale = region1.reduce((accumulator, currentValue) => accumulator + currentValue);
 
-window.onload = function () {
-$("show_quarter").onclick = quarterClicker;
-$("show_region").onclick = regionClicker;
-$("show_total").onclick = totalClicker;
+var region2Sale = region2.reduce((accumulator, currentValue) => accumulator + currentValue);
 
-}
+var region3Sale = region3.reduce((accumulator, currentValue) => accumulator + currentValue);
+
+var region4Sale = region4.reduce((accumulator, currentValue) => accumulator + currentValue);
+
+var region5Sale = region5.reduce((accumulator, currentValue) => accumulator + currentValue);
+
+// calculate total sales, use a for loop to add all the quarter totals
+
+var totalSale = region1Sale + region2Sale + region3Sale + region4Sale+region5Sale;
+
+// display total sales by quarter, use document write to display on html page
+
+window.alert(`Sale by Quarter
+
+Q1: ${saleQuarter1}
+
+Q2: ${saleQuarter2}
+
+Q3: ${saleQuarter3}
+
+Q4: ${saleQuarter4}
+
+`)
+
+// display total sales by region, use document write to display on html page
+
+window.alert(`Sale by Region
+
+Region 1: ${region1Sale}
+
+Region 2: ${region2Sale}
+
+Region 3: ${region3Sale}
+
+Region 4: ${region4Sale}
+
+Region 5: ${region5Sale}
+
+`)
+
+// display total sales, use document write to display on html page
+
+window.alert(`Total Sales: ${totalSale}`)
